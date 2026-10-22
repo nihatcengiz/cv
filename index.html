@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nihat Cengiz Pamuk | Elektrik-Elektronik & Biyomedikal Mühendisi</title>
+  <meta name="description" content="Nihat Cengiz Pamuk - Elektrik-Elektronik ve Biyomedikal Mühendisi. Güç elektroniği (SMPS, IGBT, UPS), gömülü sistemler, PCB tasarımı ve donanım geliştirme portfolyosu.">
+  <meta name="keywords" content="Nihat Cengiz Pamuk, Elektrik Elektronik Mühendisi, Biyomedikal Mühendisi, Güç Elektroniği, PCB Tasarımı, KiCad, Altium, SMPS, IGBT, STM32, Donanım Mühendisi">
+  <meta name="author" content="Nihat Cengiz Pamuk">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Nihat Cengiz Pamuk | Elektrik-Elektronik & Biyomedikal Mühendisi">
+  <meta property="og:description" content="Güç Elektroniği, 2 Katmanlı PCB Tasarımı, SMPS, IGBT ve Gömülü Sistemler Portfolyosu">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nihatcengiz.github.io/cv/">
+  <meta property="og:image" content="https://nihatcengiz.github.io/cv/SMPS.png">
+  <link rel="canonical" href="https://nihatcengiz.github.io/cv/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&subset=latin,latin-ext&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2.2">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+  <!-- Ambient Glow Backgrounds -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="circuit-grid-overlay"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Ana Sayfa">
+        <span class="logo-symbol">⚡</span>
+        <span class="logo-text">NCP<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-links">
+          <li><a href="#about" data-i18n="nav_about">Hakkımda</a></li>
+          <li><a href="#hardware" data-i18n="nav_projects">Donanım & Projeler</a></li>
+          <li><a href="#experience" data-i18n="nav_experience">Deneyim</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">Yetenekler</a></li>
+          <li><a href="#education" data-i18n="nav_education">Eğitim</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">İletişim</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" class="action-btn pill-btn" title="Dili Değiştir / Switch Language">
+          <span class="flag-icon" id="current-flag">🇹🇷</span>
+          <span class="lang-text" id="current-lang-text">TR</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" class="action-btn icon-btn" title="Tema Değiştir (Açık/Koyu)">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Download CV Dropdown Button -->
+        <div class="dropdown-wrapper">
+          <button class="btn btn-primary btn-sm dropdown-trigger" id="cv-dropdown-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-i18n="btn_download_cv">CV İndir</span>
+          </button>
+          <div class="dropdown-menu" id="cv-dropdown-menu">
+            <a href="NihatCengizPamuk_cv.pdf" download class="dropdown-item">
+              <span class="flag">🇹🇷</span>
+              <div>
+                <strong data-en="Turkish CV (PDF)">Türkçe CV (PDF)</strong>
+                <small data-en="Current Turkish resume">Güncel Türkçe Özgeçmiş</small>
+              </div>
+            </a>
+            <a href="NihatCengizPamuk_eng.pdf" download class="dropdown-item">
+              <span class="flag">🇬🇧</span>
+              <div>
+                <strong>English Resume (PDF)</strong>
+                <small data-en="Updated English resume">Güncel İngilizce Özgeçmiş</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Hamburger -->
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menüyü Aç/Kapat">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="pulsing-dot"></span>
+            <span data-i18n="hero_status">İş Birlikleri ve Yeni Fırsatlara Açık</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="greeting" data-i18n="hero_greeting">Merhaba, Ben</span>
+            <span class="name-gradient">Nihat Cengiz Pamuk</span>
+          </h1>
+
+          <h2 class="hero-role">
+            <span class="role-tag" data-i18n="role_ee">Elektrik-Elektronik Mühendisi</span>
+            <span class="divider">/</span>
+            <span class="role-tag" data-i18n="role_bme">Biyomedikal Mühendisi</span>
+          </h2>
+
+          <p class="hero-bio" data-i18n="hero_bio" style="text-align: justify; text-justify: inter-word;">
+            Elektrik-Elektronik ve Biyomedikal Mühendisiyim. Güç elektroniği, gömülü sistemler ve devre tasarımı alanlarında AR-GE, prototipleme ve üretim süreçlerinde görev aldım. Endüstriyel güç kaynakları ve medikal cihaz projelerinde elektronik kart tasarımı, test/doğrulama ve operasyonel süreç yönetimi deneyimlerine sahibim.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#hardware" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+              <span data-i18n="btn_explore_projects">Kart & Proje Galerisi</span>
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span data-i18n="btn_contact_me">İletişime Geç</span>
+            </a>
+
+            <button onclick="window.print()" class="btn btn-ghost" title="Yazdır veya PDF olarak kaydet">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span data-i18n="btn_print">Yazdır</span>
+            </button>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="metrics-bar">
+            <div class="metric-item">
+              <span class="metric-num">40 kVA</span>
+              <span class="metric-label" data-i18n="metric_ups">Endüstriyel UPS Tasarımı</span>
+            </div>
+            <div class="metric-separator"></div>
+            <div class="metric-item">
+              <span class="metric-num" data-en="4+ Boards">4+ Donanım</span>
+              <span class="metric-label" data-i18n="metric_pcb">Anakart, SMPS, IGBT & SCR</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Badge / Showcase Card -->
+        <div class="hero-visual">
+          <div class="pcb-preview-card glass-panel" onclick="openLightbox('SMPS.png', 'hw_smps_title', 'lb_smps_desc')">
+            <div class="pcb-card-badge">
+              <span class="badge-icon">⚡</span>
+              <span data-i18n="hero_card_badge">Öne Çıkan Kart Tasarımı</span>
+            </div>
+            <div class="image-wrapper">
+              <img src="SMPS.png" alt="Flyback SMPS PCB Tasarımı" class="hero-pcb-img" loading="eager">
+              <div class="image-overlay-hint">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span data-i18n="click_to_zoom">Yakınlaştırmak İçin Tıklayın</span>
+              </div>
+            </div>
+            <div class="pcb-card-footer">
+              <div class="pcb-title-group">
+                <span class="pcb-card-name" data-en="Flyback SMPS Module">Flyback SMPS Modülü</span>
+                <span class="pcb-card-tech" data-en="KiCad • 2-Layer PCB • High Voltage">KiCad • 2 Katmanlı PCB • Yüksek Gerilim</span>
+              </div>
+              <span class="view-chip" data-i18n="examine_btn">İncele →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="tag_about">PROFİL</span>
+          <h2 class="section-title" data-i18n="title_about">Mühendislik Yaklaşımım & Özet</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-panel">
+            <div class="card-icon">🎯</div>
+            <h3 data-i18n="about_card1_title">Ar-Ge'den Üretime Uçtan Uca Süreç</h3>
+            <p data-i18n="about_card1_desc" style="text-align: justify; text-justify: inter-word;">
+              Konsept tasarımdan şematik çizimine, PSIM simülasyonlarından KiCad/Altium ile 2 katmanlı PCB layout'una, prototipleme, lehimleme, osiloskop ile donanım doğrulamasına ve seri üretim BOM yönetimine kadar tüm adımlarda bizzat görev aldım.
+            </p>
+          </div>
+
+          <div class="about-card glass-panel">
+            <div class="card-icon">⚡</div>
+            <h3 data-i18n="about_card2_title">Güç Elektroniği & Sürücüler</h3>
+            <p data-i18n="about_card2_desc" style="text-align: justify; text-justify: inter-word;">
+              40 kVA kesintisiz güç kaynakları (UPS) mimarisinde flyback SMPS, yüksek hızlı ve galvanik izoleli IGBT sürücü devreleri, tristör (SCR) faz kontrol tetikleme modülleri ve EMI/EMC standartlarına uyumlu donanım katları geliştirdim.
+            </p>
+          </div>
+
+          <div class="about-card glass-panel">
+            <div class="card-icon">🩺</div>
+            <h3 data-i18n="about_card3_title">Medikal & Gömülü Sistem Bütünlüğü</h3>
+            <p data-i18n="about_card3_desc" style="text-align: justify; text-justify: inter-word;">
+              Biyomedikal mühendisliği altyapımla TÜBİTAK ve KOSGEB destekli “Otonom Odyometri Cihazı” projesinde kurucu ortak olarak yer aldım; STM32 tabanlı kontrol, HMI dokunmatik arayüz tasarımı, RS485/UART haberleşme ve medikal sertifikasyon aşamalarını yürüttüm.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hardware / PCB Showcase Section -->
+    <section class="section hardware-section" id="hardware">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="tag_hardware">DONANIM GALERİSİ</span>
+          <h2 class="section-title" data-i18n="title_hardware">Tasarlanan Elektronik Kartlar & 3D Modeller</h2>
+          <p class="section-subtitle" data-i18n="subtitle_hardware">
+            Bizzat tasarladığım, üretime aktarılan ve testleri tamamlanan güç elektroniği kartlarının 3D renderları.
+          </p>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Card: UPS Control Motherboard (anakart.png) -->
+          <div class="project-card glass-panel" onclick="openLightbox('anakart.png', 'hw_motherboard_title', 'lb_motherboard_desc')">
+            <div class="project-img-box">
+              <img src="anakart.png" alt="UPS Ana Kontrol Kartı (Motherboard)" class="project-img" loading="lazy">
+              <div class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span data-i18n="zoom_hint">Büyüt & İncele</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category" data-en="CONTROL & EMBEDDED MOTHERBOARD">ANA KONTROL & GÖMÜLÜ SİSTEM</div>
+              <h3 class="project-title" data-i18n="hw_motherboard_title">UPS Ana Kontrol Kartı</h3>
+              <p class="project-desc" data-i18n="hw_motherboard_desc">
+                40 kVA endüstriyel UPS mimarisi için tasarlanmış merkezi kontrol ve sinyal işleme anakartı. STM32 mikrokontrolcü, izole analog/sayısal besleme katları, 3-faz AC ve DC bara örnekleme şebekesi, HMI dokunmatik panel ve RS485 haberleşme arayüzleri.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">STM32</span>
+                <span class="tag" data-en="Motherboard">Anakart</span>
+                <span class="tag" data-en="PCB Design">PCB Tasarımı</span>
+                <span class="tag" data-en="Isolated Power">İzole Besleme</span>
+                <span class="tag">RS485 / HMI</span>
+                <span class="tag" data-en="Signal Conditioning">Sinyal İşleme</span>
+              </div>
+              <button class="project-btn" type="button">
+                <span data-i18n="view_details">Teknik Detayları Gör</span> →
+              </button>
+            </div>
+          </div>
+          <!-- Card 1: Flyback SMPS -->
+          <div class="project-card glass-panel" onclick="openLightbox('SMPS.png', 'hw_smps_title', 'lb_smps_desc')">
+            <div class="project-img-box">
+              <img src="SMPS.png" alt="Flyback SMPS Devre Kartı" class="project-img" loading="lazy">
+              <div class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span data-i18n="zoom_hint">Büyüt & İncele</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category" data-en="POWER ELECTRONICS">GÜÇ ELEKTRONİĞİ</div>
+              <h3 class="project-title" data-i18n="hw_smps_title">Flyback SMPS Güç Katı Tasarımı</h3>
+              <p class="project-desc" data-i18n="hw_smps_desc">
+                UPS ve endüstriyel sistemlerin yardımcı besleme katları için tasarlanmış izole flyback SMPS kartı. Yüksek gerilim ayrımı, filtreleme bobinleri, koruma devreleri ve termal soğutucu dizaynı içerir.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">KiCad</span>
+                <span class="tag">Flyback SMPS</span>
+                <span class="tag" data-en="High Voltage">Yüksek Gerilim</span>
+                <span class="tag" data-en="2-Layer PCB">2-Katman PCB</span>
+                <span class="tag" data-en="EMI Filter">EMI Filtresi</span>
+              </div>
+              <button class="project-btn" type="button">
+                <span data-i18n="view_details">Teknik Detayları Gör</span> →
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: IGBT Gate Driver -->
+          <div class="project-card glass-panel" onclick="openLightbox('igbt.png', 'hw_igbt_title', 'lb_igbt_desc')">
+            <div class="project-img-box">
+              <img src="igbt.png" alt="IGBT Gate Driver PCB" class="project-img" loading="lazy">
+              <div class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span data-i18n="zoom_hint">Büyüt & İncele</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category" data-en="SWITCHING & DRIVERS">ANAHTARLAMA & SÜRÜCÜLER</div>
+              <h3 class="project-title" data-i18n="hw_igbt_title">İzole IGBT Sürücü Kartı (Gate Driver)</h3>
+              <p class="project-desc" data-i18n="hw_igbt_desc">
+                40 kVA UPS evirici modüllerinde kullanılan, yüksek anahtarlama hızına ve parazit bağışıklığına sahip izole DC/DC ve optik izolasyonlu IGBT kapı sürücü devresi.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">IGBT Driver</span>
+                <span class="tag">Gate Driver</span>
+                <span class="tag" data-en="Galvanic Isolation">Galvanik İzolasyon</span>
+                <span class="tag">Altium / KiCad</span>
+                <span class="tag" data-en="Dead-time Protection">Dead-time Koruma</span>
+              </div>
+              <button class="project-btn" type="button">
+                <span data-i18n="view_details">Teknik Detayları Gör</span> →
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Tristör SCR Driver -->
+          <div class="project-card glass-panel" onclick="openLightbox('tristor.png', 'hw_scr_title', 'lb_scr_desc')">
+            <div class="project-img-box">
+              <img src="tristor.png" alt="Tristör Sürücü Devresi" class="project-img" loading="lazy">
+              <div class="zoom-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span data-i18n="zoom_hint">Büyüt & İncele</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-category" data-en="PHASE CONTROL">FAZ KONTROLÜ</div>
+              <h3 class="project-title" data-i18n="hw_scr_title">Tristör (SCR) Tetikleme ve Sürücü Kartı</h3>
+              <p class="project-desc" data-i18n="hw_scr_desc">
+                Statik bypass ve doğrultucu katlar için darbe transformatörlü (EE25/13/7), yüksek gerilim izoleli 3 kanallı tristör kapı tetikleme kartı tasarımı.
+              </p>
+              <div class="tech-tags">
+                <span class="tag" data-en="SCR / Thyristor">SCR / Tristör</span>
+                <span class="tag" data-en="Pulse Transformer">Darbe Trafosu</span>
+                <span class="tag" data-en="Bypass Control">Bypass Kontrol</span>
+                <span class="tag" data-en="Isolation">İzolasyon</span>
+                <span class="tag" data-en="2-Layer PCB">2-Katman PCB</span>
+              </div>
+              <button class="project-btn" type="button">
+                <span data-i18n="view_details">Teknik Detayları Gör</span> →
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: 40 kVA UPS System -->
+          <div class="project-card glass-panel project-card-text">
+            <div class="project-card-icon-header">
+              <div class="system-icon">🔋</div>
+              <span class="system-badge" data-en="SYSTEM PROJECT">SİSTEM PROJESİ</span>
+            </div>
+            <div class="project-info">
+              <div class="project-category" data-en="INDUSTRIAL SYSTEMS">ENDÜSTRİYEL SİSTEMLER</div>
+              <h3 class="project-title" data-i18n="sys_ups_title">40 kVA UPS Tasarım & Üretim Entegrasyonu</h3>
+              <p class="project-desc" data-i18n="sys_ups_desc">
+                BetaUPS bünyesinde 40 kVA Kesintisiz Güç Kaynağı projesinde tasarım aşamasından saha üretimine kadar tüm teknik süreçler: Güç katları, HMI dokunmatik operatör paneli arayüzü, RS485/UART haberleşme, test prosedürleri ve malzeme tedarik (BOM) yönetimi.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">40 kVA UPS</span>
+                <span class="tag" data-en="HMI Display">HMI Ekran</span>
+                <span class="tag">RS485 / UART</span>
+                <span class="tag" data-en="BOM Management">BOM Yönetimi</span>
+                <span class="tag" data-en="Hardware Testing">Donanım Testi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Autonomous Audiometer -->
+          <div class="project-card glass-panel project-card-text">
+            <div class="project-card-icon-header">
+              <div class="system-icon">🩺</div>
+              <span class="system-badge" data-en="R&D & STARTUP">AR-GE & GİRİŞİM</span>
+            </div>
+            <div class="project-info">
+              <div class="project-category" data-en="MEDICAL DEVICES & ENTREPRENEURSHIP">MEDİKAL CİHAZ & GİRİŞİMCİLİK</div>
+              <h3 class="project-title" data-i18n="sys_med_title">Otonom Odyometri Medikal Cihazı</h3>
+              <p class="project-desc" data-i18n="sys_med_desc">
+                AiHear Teknoloji A.Ş. kurucu ortaklığıyla TÜBİTAK ve KOSGEB destekli otonom işitme test cihazı geliştirilmesi. Medikal donanım tasarımı, akustik testler, biyouyumluluk ve regülatif sertifikasyon hazırlık süreçlerinin yönetimi.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">TÜBİTAK</span>
+                <span class="tag">KOSGEB</span>
+                <span class="tag" data-en="Medical Device">Medikal Cihaz</span>
+                <span class="tag">STM32</span>
+                <span class="tag" data-en="Certification">Sertifikasyon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="tag_exp">KARİYER</span>
+          <h2 class="section-title" data-i18n="title_exp">İş & Staj Deneyimleri</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="timeline">
+          <!-- Item 1: BetaUPS -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="role" data-i18n="exp1_role">Elektrik-Elektronik Mühendisi</h3>
+                  <h4 class="company">BetaUPS Kesintisiz Güç Kaynakları & Biensis Mühendislik</h4>
+                </div>
+                <div class="timeline-date">
+                  <span class="date-badge" data-en="Apr 2023 – Oct 2026">Nisan 2023 – Ekim 2026</span>
+                </div>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp1_b1"><strong>40 kVA UPS Projesi:</strong> Tasarım aşamasından seri üretime kadar tüm teknik ve operasyonel aşamalarda aktif sorumluluk.</li>
+                <li data-i18n="exp1_b2"><strong>PCB Tasarımı:</strong> Flyback SMPS, IGBT sürücü ve tristör sürücü kartları dahil olmak üzere 2 katmanlı PCB tasarımlarını ve geliştirme çalışmalarını yürüttüm.</li>
+                <li data-i18n="exp1_b3"><strong>Test & Doğrulama:</strong> Elektronik prototiplerin üretimini, donanım getirme (bring-up), osiloskop testlerini ve doğrulama süreçlerini tamamladım.</li>
+                <li data-i18n="exp1_b4"><strong>HMI & Protokol Entegrasyonu:</strong> Dokunmatik ekran operatör arayüzlerini tasarladım; RS485, I2C ve UART haberleşme entegrasyonlarını kurdum.</li>
+                <li data-i18n="exp1_b5"><strong>Operasyonel Yönetim:</strong> BOM (Malzeme Listesi) yönetimi, kritik komponent tedariği ve sipariş takibi süreçlerini yönettim.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 2: AiHear -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="role" data-i18n="exp2_role">Kurucu Ortak</h3>
+                  <h4 class="company">AiHear Teknoloji A.Ş.</h4>
+                </div>
+                <div class="timeline-date">
+                  <span class="date-badge" data-en="Sep 2022 – Nov 2022">Eylül 2022 – Kasım 2022</span>
+                </div>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp2_b1">TÜBİTAK ve KOSGEB destekli <strong>“Otonom Odyometri Cihazı Geliştirilmesi”</strong> projesinde kurucu ortak olarak yer aldım.</li>
+                <li data-i18n="exp2_b2">Medikal cihaz donanım geliştirme, doğrulama testleri ve medikal cihaz sertifikasyon süreçlerinde aktif rol üstlendim.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 3: Canlar TM -->
+          <div class="timeline-item internship-item">
+            <div class="timeline-marker">
+              <div class="marker-dot dot-intern"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="role" data-i18n="exp3_role">Stajyer Mühendis</h3>
+                  <h4 class="company">Canlar TM Tekstil Makina A.Ş.</h4>
+                </div>
+                <div class="timeline-date">
+                  <span class="date-badge" data-en="Aug 2021 – Sep 2021">Ağustos 2021 – Eylül 2021</span>
+                </div>
+              </div>
+              <p class="intern-desc" data-i18n="exp3_desc">
+                Tekstil sektöründe kullanılan yüksek kapasiteli endüstriyel makinaların üretim, montaj, kurulum ve saha test aşamalarında görev aldım.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4: 3G Medikal -->
+          <div class="timeline-item internship-item">
+            <div class="timeline-marker">
+              <div class="marker-dot dot-intern"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="role" data-i18n="exp4_role">Stajyer Mühendis</h3>
+                  <h4 class="company">3G Medikal</h4>
+                </div>
+                <div class="timeline-date">
+                  <span class="date-badge" data-en="Aug 2018 – Sep 2018">Ağustos 2018 – Eylül 2018</span>
+                </div>
+              </div>
+              <p class="intern-desc" data-i18n="exp4_desc">
+                Endoskopi ve medikal görüntüleme cihazlarının teknik destek, kurulum ve klinik servis süreçlerinde deneyim edindim; servise gelen cihazlarda ilk arıza tespit adımlarını yürüttüm.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5: Florence Nightingale -->
+          <div class="timeline-item internship-item">
+            <div class="timeline-marker">
+              <div class="marker-dot dot-intern"></div>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="role" data-i18n="exp5_role">Biyomedikal Stajyeri</h3>
+                  <h4 class="company" data-en="Istanbul Florence Nightingale Hospital (Şişli & Gayrettepe)">İstanbul Florence Nightingale Hastanesi (Şişli & Gayrettepe)</h4>
+                </div>
+                <div class="timeline-date">
+                  <span class="date-badge" data-en="Aug 2017 – Sep 2017">Ağustos 2017 – Eylül 2017</span>
+                </div>
+              </div>
+              <p class="intern-desc" data-i18n="exp5_desc">
+                Kapsamlı medikal cihaz envanteri oluşturulması, ameliyathane ve yoğun bakım cihazlarının periyodik bakım, kalibrasyon ve arıza giderme operasyonlarında görev aldım.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Tools Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="tag_skills">YETKİNLİKLER</span>
+          <h2 class="section-title" data-i18n="title_skills">Teknik Yetenekler & Araçlar</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Card 1: CAD & EDA -->
+          <div class="skill-category-card glass-panel">
+            <div class="skill-cat-header">
+              <span class="cat-icon">📐</span>
+              <h3 data-i18n="skill_cat1">Tasarım & Simülasyon Araçları</h3>
+            </div>
+            <div class="skill-badges">
+              <div class="badge-item">
+                <span class="badge-name">KiCad</span>
+                <span class="badge-level" data-i18n="level_advanced">İleri Düzey</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name">Altium Designer</span>
+                <span class="badge-level" data-i18n="level_proficient">Yetkin</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name">PSIM</span>
+                <span class="badge-level" data-i18n="level_sim">Güç Simülasyonu</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="SPICE Simulations">SPICE Simülasyonları</span>
+                <span class="badge-level" data-en="Circuit Analysis">Devre Analizi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Power Electronics -->
+          <div class="skill-category-card glass-panel">
+            <div class="skill-cat-header">
+              <span class="cat-icon">⚡</span>
+              <h3 data-i18n="skill_cat2">Güç Elektroniği</h3>
+            </div>
+            <div class="skill-badges">
+              <div class="badge-item">
+                <span class="badge-name">Flyback SMPS</span>
+                <span class="badge-level" data-i18n="level_core">Uzmanlık Alanı</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="IGBT Gate Drivers">IGBT Sürücü Devreleri</span>
+                <span class="badge-level" data-i18n="level_core">Uzmanlık Alanı</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="Thyristor (SCR) Control">Tristör (SCR) Kontrolü</span>
+                <span class="badge-level" data-en="Phase Firing">Faz Tetikleme</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="UPS Power Stages">UPS Güç Katları</span>
+                <span class="badge-level">40 kVA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Embedded & Comms -->
+          <div class="skill-category-card glass-panel">
+            <div class="skill-cat-header">
+              <span class="cat-icon">💻</span>
+              <h3 data-i18n="skill_cat3">Gömülü Sistemler & Haberleşme</h3>
+            </div>
+            <div class="skill-badges">
+              <div class="badge-item">
+                <span class="badge-name" data-en="STM32 Microcontrollers">STM32 Mikrodenetleyiciler</span>
+                <span class="badge-level">ARM Cortex-M</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="HMI Touchscreens">HMI Dokunmatik Ekranlar</span>
+                <span class="badge-level" data-i18n="level_ui">Arayüz Tasarımı</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name">RS485 & Modbus</span>
+                <span class="badge-level" data-en="Industrial Bus">Endüstriyel Bus</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name">I2C & UART</span>
+                <span class="badge-level" data-en="Serial Communication">Seri İletişim</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Hardware Engineering -->
+          <div class="skill-category-card glass-panel">
+            <div class="skill-cat-header">
+              <span class="cat-icon">🛠️</span>
+              <h3 data-i18n="skill_cat4">Elektronik Donanım & Üretim</h3>
+            </div>
+            <div class="skill-badges">
+              <div class="badge-item">
+                <span class="badge-name" data-en="2-Layer PCB Design">2 Katmanlı PCB Tasarımı</span>
+                <span class="badge-level" data-i18n="level_pcb">Yerleşim & Routing</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="EMI / EMC Compliance">EMI / EMC Uyumluluğu</span>
+                <span class="badge-level" data-i18n="level_shield">İzolasyon & Filtre</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="Hardware Test & Validation">Donanım Test & Doğrulama</span>
+                <span class="badge-level" data-i18n="level_lab">Osiloskop / Bring-up</span>
+              </div>
+              <div class="badge-item">
+                <span class="badge-name" data-en="BOM & Procurement">BOM Yönetimi & Tedarik</span>
+                <span class="badge-level" data-i18n="level_prod">Üretim & Lojistik</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages & Additional Info -->
+        <div class="additional-info-bar glass-panel">
+          <div class="info-group">
+            <span class="info-icon">🌐</span>
+            <div>
+              <strong data-i18n="info_lang_title">Diller:</strong>
+              <span data-i18n="info_lang_desc">Türkçe (Anadil) • İngilizce (Orta / Intermediate)</span>
+            </div>
+          </div>
+          <div class="info-group">
+            <span class="info-icon">📋</span>
+            <div>
+              <strong data-i18n="info_extra_title">Ek Bilgiler:</strong>
+              <span data-i18n="info_extra_desc">Askerlik Yapıldı • B Sınıfı Ehliyet • İstanbul / Maltepe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education-section" id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="tag_edu">AKADEMİK</span>
+          <h2 class="section-title" data-i18n="title_edu">Eğitim Bilgileri</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="education-grid">
+          <div class="edu-card glass-panel">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-details">
+              <span class="edu-years">2019 – 2021</span>
+              <h3 class="edu-degree" data-i18n="edu1_degree">Lisans, Elektrik-Elektronik Mühendisliği</h3>
+              <h4 class="edu-school" data-en="Zonguldak Bülent Ecevit University">Zonguldak Bülent Ecevit Üniversitesi</h4>
+              <p class="edu-desc" data-i18n="edu1_desc">
+                Güç elektroniği, elektrik makineleri, devre teorisi, kontrol sistemleri ve gömülü donanım alanlarında teorik ve pratik mühendislik formasyonu.
+              </p>
+            </div>
+          </div>
+
+          <div class="edu-card glass-panel">
+            <div class="edu-icon">🔬</div>
+            <div class="edu-details">
+              <span class="edu-years">2015 – 2019</span>
+              <h3 class="edu-degree" data-i18n="edu2_degree">Lisans, Biyomedikal Mühendisliği</h3>
+              <h4 class="edu-school" data-en="Zonguldak Bülent Ecevit University">Zonguldak Bülent Ecevit Üniversitesi</h4>
+              <p class="edu-desc" data-i18n="edu2_desc">
+                Biyomedikal enstrümantasyon, medikal elektronik, sinyal işleme, fizyolojik modelleme ve tıbbi cihaz tasarım süreçleri.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="tag_contact">İLETİŞİM</span>
+          <h2 class="section-title" data-i18n="title_contact">Benimle İletişime Geçin</h2>
+          <p class="section-subtitle" data-i18n="subtitle_contact">
+            Mühendislik projeleri, danışmanlık veya kariyer fırsatları için doğrudan bana ulaşabilirsiniz.
+          </p>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Email Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon">✉️</div>
+            <h3 data-i18n="contact_email_title">E-Posta</h3>
+            <p class="contact-value" id="email-text">nihatcengizpamuk@gmail.com</p>
+            <div class="contact-card-actions">
+              <a href="mailto:nihatcengizpamuk@gmail.com" class="btn btn-sm btn-primary" data-i18n="btn_send_email">E-posta Gönder</a>
+              <button class="btn btn-sm btn-outline copy-btn" onclick="copyToClipboard('nihatcengizpamuk@gmail.com', this)">
+                <span data-i18n="btn_copy">Kopyala</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- LinkedIn Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path>
+              </svg>
+            </div>
+            <h3>LinkedIn</h3>
+            <p class="contact-value">linkedin.com/in/nihatcengizpamuk</p>
+            <div class="contact-card-actions">
+              <a href="https://www.linkedin.com/in/nihatcengizpamuk" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" data-en="View Profile">Profili Görüntüle</a>
+            </div>
+          </div>
+
+          <!-- Location Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon">📍</div>
+            <h3 data-i18n="contact_loc_title">Konum</h3>
+            <p class="contact-value" data-en="Maltepe, Istanbul / Türkiye">Maltepe, İstanbul / Türkiye</p>
+            <div class="contact-card-actions">
+              <span class="location-badge" data-i18n="loc_active">İstanbul İçi & Hibrit/Uzaktan</span>
+            </div>
+          </div>
+
+          <!-- GitHub Card -->
+          <div class="contact-card glass-panel">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </div>
+            <h3>GitHub</h3>
+            <p class="contact-value">github.com/nihatcengiz</p>
+            <div class="contact-card-actions">
+              <a href="https://github.com/nihatcengiz" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" data-en="Profile">Profil</a>
+              <a href="https://github.com/nihatcengiz/cv" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF Downloads Box -->
+        <div class="downloads-box glass-panel">
+          <div class="downloads-text">
+            <h3 data-i18n="dl_box_title">Özgeçmişimi PDF Formatında İndirin</h3>
+            <p data-i18n="dl_box_desc">Ayrıntılı teknik özgeçmişimin Türkçe ve İngilizce PDF kopyalarına doğrudan erişebilirsiniz.</p>
+          </div>
+          <div class="downloads-btns">
+            <a href="NihatCengizPamuk_cv.pdf" download class="btn btn-primary">
+              <span>🇹🇷</span>
+              <span data-i18n="btn_dl_tr">Türkçe PDF İndir</span>
+            </a>
+            <a href="NihatCengizPamuk_eng.pdf" download class="btn btn-outline">
+              <span>🇬🇧</span>
+              <span data-i18n="btn_dl_en">Download English PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal for PCB High-Res inspection -->
+  <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-dialog" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Kapat">&times;</button>
+      <div class="lightbox-img-wrapper">
+        <img src="" alt="" id="lightbox-img" class="lightbox-img">
+      </div>
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title">Kart Başlığı</h3>
+        <p id="lightbox-desc">Kart Açıklaması</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification for Copy -->
+  <div class="toast-notification" id="toast">
+    <span class="toast-icon">✓</span>
+    <span id="toast-message">Panoya kopyalandı!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <p>© <span id="current-year">2026</span> <strong>Nihat Cengiz Pamuk</strong>. <span data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
+        <p class="footer-sub" data-en="Electrical-Electronics & Biomedical Engineer">Elektrik-Elektronik & Biyomedikal Mühendisi</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" aria-label="Yukarı Çık">
+          ↑ <span data-i18n="back_to_top">Yukarı Çık</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
