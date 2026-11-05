@@ -85,6 +85,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* Contain decorative glows that intentionally bleed outside the viewport */
+  overflow-x: hidden;
 }
 
 body {
@@ -772,7 +774,7 @@ ul {
    -------------------------------------------------------------------------- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1112,13 +1114,14 @@ ul {
    -------------------------------------------------------------------------- */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.75rem;
   margin-bottom: 2rem;
 }
 
 .skill-category-card {
   padding: 1.85rem;
+  min-width: 0;
 }
 
 .skill-cat-header {
@@ -1141,7 +1144,7 @@ ul {
 
 .skill-badges {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
 }
 
@@ -1655,7 +1658,7 @@ ul {
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .education-grid {
@@ -1669,6 +1672,13 @@ ul {
   .downloads-box {
     flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
+  }
+
+  .downloads-btns {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
   }
 }
 
@@ -1738,6 +1748,100 @@ ul {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+
+  /* Timeline headers stack so long date badges never push the card wider */
+  .timeline-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .timeline-date {
+    align-self: flex-start;
+  }
+
+  /* Keep the header from pushing the burger button off-screen */
+  .header-actions {
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .nav-container .main-nav {
+    flex: 0 0 0;
+    min-width: 0;
+  }
+
+  .main-nav {
+    overflow-y: auto;
+    max-height: calc(100vh - 72px);
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .brand-logo {
+    font-size: 1.15rem;
+  }
+
+  .logo-symbol {
+    font-size: 1.1rem;
+  }
+
+  .header-actions .pill-btn {
+    gap: 0.3rem;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.82rem;
+  }
+
+  .header-actions .icon-btn {
+    width: 34px;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .project-card-icon-header {
+    padding: 1.25rem 1.25rem 0 1.25rem;
+  }
+
+  .project-info {
+    padding: 1.25rem;
+  }
+
+  .timeline-item {
+    padding-left: 42px;
+  }
+
+  .timeline-content,
+  .skill-category-card {
+    padding: 1.25rem;
+  }
+
+  .skill-badges {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .downloads-box {
+    padding: 1.5rem;
+  }
+
+  .downloads-btns {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .downloads-btns .btn {
+    justify-content: center;
+    width: 100%;
   }
 }
 
