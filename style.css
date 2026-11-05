@@ -822,6 +822,32 @@ ul {
   margin-bottom: 1.25rem;
 }
 
+/* Board specification table (definition list) */
+.spec-list {
+  margin: 0 0 1.25rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: minmax(0, 45%) minmax(0, 55%);
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.spec-row dt {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.spec-row dd {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
 .tag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
