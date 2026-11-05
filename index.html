@@ -183,7 +183,7 @@
 
         <!-- Hero Visual Badge / Showcase Card -->
         <div class="hero-visual">
-          <div class="pcb-preview-card glass-panel" onclick="openLightbox('SMPS.png', 'hw_smps_title', 'lb_smps_desc')">
+          <div class="pcb-preview-card glass-panel" onclick="openLightbox([{ src: 'SMPS.png', titleKey: 'hw_smps_title', descKey: 'lb_smps_desc' }])">
             <div class="pcb-card-badge">
               <span class="badge-icon">⚡</span>
               <span data-i18n="hero_card_badge">Öne Çıkan Kart Tasarımı</span>
@@ -263,7 +263,7 @@
 
         <div class="projects-grid">
           <!-- Card: UPS Control Motherboard (anakart.png) -->
-          <div class="project-card glass-panel" onclick="openLightbox('anakart.png', 'hw_motherboard_title', 'lb_motherboard_desc')">
+          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'anakart.png', titleKey: 'hw_motherboard_title', descKey: 'lb_motherboard_desc' }])">
             <div class="project-img-box">
               <img src="anakart.png" alt="UPS Ana Kontrol Kartı (Motherboard)" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -296,7 +296,7 @@
             </div>
           </div>
           <!-- Card 1: Flyback SMPS -->
-          <div class="project-card glass-panel" onclick="openLightbox('SMPS.png', 'hw_smps_title', 'lb_smps_desc')">
+          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'SMPS.png', titleKey: 'hw_smps_title', descKey: 'lb_smps_desc' }])">
             <div class="project-img-box">
               <img src="SMPS.png" alt="Flyback SMPS Devre Kartı" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -329,7 +329,7 @@
           </div>
 
           <!-- Card 2: IGBT Gate Driver -->
-          <div class="project-card glass-panel" onclick="openLightbox('igbt.png', 'hw_igbt_title', 'lb_igbt_desc')">
+          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'igbt.png', titleKey: 'hw_igbt_title', descKey: 'lb_igbt_desc' }])">
             <div class="project-img-box">
               <img src="igbt.png" alt="IGBT Gate Driver PCB" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -362,7 +362,7 @@
           </div>
 
           <!-- Card 3: Tristör SCR Driver -->
-          <div class="project-card glass-panel" onclick="openLightbox('tristor.png', 'hw_scr_title', 'lb_scr_desc')">
+          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'tristor.png', titleKey: 'hw_scr_title', descKey: 'lb_scr_desc' }])">
             <div class="project-img-box">
               <img src="tristor.png" alt="Tristör Sürücü Devresi" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -859,10 +859,21 @@
   <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
     <div class="lightbox-dialog" onclick="event.stopPropagation()">
       <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Kapat">&times;</button>
+      <button class="lightbox-nav lightbox-nav-prev" type="button" id="lightbox-prev" aria-label="Önceki fotoğraf">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="lightbox-nav lightbox-nav-next" type="button" id="lightbox-next" aria-label="Sonraki fotoğraf">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
       <div class="lightbox-img-wrapper">
         <img src="" alt="" id="lightbox-img" class="lightbox-img">
       </div>
       <div class="lightbox-caption">
+        <span class="lightbox-counter" id="lightbox-counter" hidden></span>
         <h3 id="lightbox-title">Kart Başlığı</h3>
         <p id="lightbox-desc">Kart Açıklaması</p>
       </div>

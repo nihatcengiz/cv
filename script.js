@@ -69,7 +69,7 @@ const i18nData = {
     ups_img_power_title: "Güç Kartları, LED Tanı ve Kablaj",
     ups_img_power_desc: "Çalışır durumdaki UPS kabininde güç/sürücü kartları, modül durum LED'leri ve çok damarlı kontrol kablajı.",
     ups_img_smps_title: "SMPS ve Kontrol Kartı Katmanı",
-    ups_img_smps_desc: "Yardımcı besleme (flyback SMPS) kartları, kontrol/ölçüm kartları ve DC bara kapasitör grubunun yerleşimi.",
+    ups_img_smps_desc: "SMPS kartı ve ana kontrol (PFC-Inverter) kontrol kartlarının yerleşimi.",
     ups_img_hmi_settings_title: "HMI Ayarlar Ekranı",
     ups_img_hmi_settings_desc: "Dokunmatik HMI panel ayarlar menüsü: nominal çıkış gerilimi, çıkış frekansı, otomatik akü test süresi, bypass limitleri ve kalibrasyon ayarları.",
     ups_img_hmi_measure_title: "HMI Ölçüm Ekranı (RS485)",
@@ -191,7 +191,7 @@ const i18nData = {
     ups_img_power_title: "Power Boards, LED Diagnostics & Wiring",
     ups_img_power_desc: "Powered-up UPS cabinet showing power/driver boards, module status LEDs and multi-core control harnesses.",
     ups_img_smps_title: "SMPS & Control Board Layer",
-    ups_img_smps_desc: "Layout of auxiliary flyback SMPS boards, control/measurement cards and the DC bus capacitor bank.",
+    ups_img_smps_desc: "Layout of the SMPS board and the main control (PFC-Inverter) control boards.",
     ups_img_hmi_settings_title: "HMI Settings Screen",
     ups_img_hmi_settings_desc: "Touchscreen HMI settings menu: nominal output voltage, output frequency, automatic battery test duration, bypass limits and calibration settings.",
     ups_img_hmi_measure_title: "HMI Measurement Screen (RS485)",
@@ -419,67 +419,117 @@ function initDropdown() {
 // -----------------------------------------------------------------------------
 // UPS Device Photo Mini-Gallery (preview strip inside the project card)
 // -----------------------------------------------------------------------------
+// When the lightbox is opened from a gallery, the slide set is remembered so
+// the user can move between photos with the arrows, keyboard or a swipe.
+let activeGallery = null;
+let lightboxSlides = [];
+let lightboxIndex = 0;
+
 function initUpsGallery() {
   const gallery = document.getElementById('ups-gallery');
   const ctaBtn = document.getElementById('ups-gallery-btn');
   if (!gallery) return;
 
-  const shots = Array.from(gallery.querySelectorAll('.ups-shot'));
-  if (!shots.length) return;
+  const thumbs = Array.from(gallery.querySelectorAll('.ups-shot'));
+  if (!thumbs.length) return;
 
-  const openShot = (shot) => {
-    shots.forEach((s) => s.classList.toggle('is-active', s === shot));
-    openLightbox(
-      shot.dataset.src,
-      shot.dataset.title,
-      shot.dataset.desc
-    );
+  const slides = thumbs.map((thumb) => ({
+    src: thumb.dataset.src,
+    titleKey: thumb.dataset.title,
+    descKey: thumb.dataset.desc,
+  }));
+
+  const setActive = (index) => {
+    thumbs.forEach((t, i) => t.classList.toggle('is-active', i === index));
   };
 
-  shots.forEach((shot) => {
-    shot.addEventListener('click', () => openShot(shot));
+  const openShot = (index) => {
+    setActive(index);
+    openLightbox(slides, index);
+  };
+
+  thumbs.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => openShot(i));
   });
 
   // The CTA button opens the currently highlighted photo
   if (ctaBtn) {
     ctaBtn.addEventListener('click', () => {
-      const active = gallery.querySelector('.ups-shot.is-active') || shots[0];
-      openShot(active);
+      const activeIndex = thumbs.findIndex((t) => t.classList.contains('is-active'));
+      openShot(activeIndex >= 0 ? activeIndex : 0);
     });
   }
+
+  // Keep the thumbnail strip in sync while navigating inside the lightbox
+  activeGallery = {
+    onChange: (index) => setActive(index),
+  };
 }
 
 // -----------------------------------------------------------------------------
 // Lightbox Modal for PCB High-Resolution Inspection
 // -----------------------------------------------------------------------------
-function openLightbox(imageSrc, titleKey, descKey) {
-  const modal = document.getElementById('lightbox-modal');
+function renderLightboxSlide() {
   const img = document.getElementById('lightbox-img');
   const titleEl = document.getElementById('lightbox-title');
   const descEl = document.getElementById('lightbox-desc');
+  const counterEl = document.getElementById('lightbox-counter');
   const dict = i18nData[currentLanguage] || i18nData.tr;
+  const slide = lightboxSlides[lightboxIndex];
+  if (!img || !titleEl || !descEl || !slide) return;
 
-  if (modal && img && titleEl && descEl) {
-    const title = dict[titleKey] || titleKey;
-    img.classList.remove('is-landscape');
-    img.src = imageSrc;
-    img.alt = title;
-    titleEl.textContent = title;
-    descEl.textContent = dict[descKey] || descKey;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const title = dict[slide.titleKey] || slide.titleKey;
+  img.classList.remove('is-landscape');
+  img.src = slide.src;
+  img.alt = title;
+  titleEl.textContent = title;
+  descEl.textContent = dict[slide.descKey] || slide.descKey;
 
-    // Landscape device photos look better filling the dialog width
-    const tagPhoto = () => {
-      const isLandscape = img.naturalWidth > img.naturalHeight;
-      img.classList.toggle('is-landscape', isLandscape);
-    };
-    if (img.complete && img.naturalWidth) {
-      tagPhoto();
+  if (counterEl) {
+    if (lightboxSlides.length > 1) {
+      counterEl.textContent = `${lightboxIndex + 1} / ${lightboxSlides.length}`;
+      counterEl.hidden = false;
     } else {
-      img.onload = tagPhoto;
+      counterEl.hidden = true;
     }
   }
+
+  // Landscape device photos look better filling the dialog width
+  const tagPhoto = () => {
+    const isLandscape = img.naturalWidth > img.naturalHeight;
+    img.classList.toggle('is-landscape', isLandscape);
+  };
+  if (img.complete && img.naturalWidth) {
+    tagPhoto();
+  } else {
+    img.onload = tagPhoto;
+  }
+}
+
+function showLightboxSlide(index) {
+  if (!lightboxSlides.length) return;
+  const total = lightboxSlides.length;
+  lightboxIndex = ((index % total) + total) % total;
+  renderLightboxSlide();
+  if (activeGallery) activeGallery.onChange(lightboxIndex);
+}
+
+function stepLightbox(direction) {
+  if (lightboxSlides.length < 2) return;
+  showLightboxSlide(lightboxIndex + direction);
+}
+
+function openLightbox(slides, startIndex = 0) {
+  const modal = document.getElementById('lightbox-modal');
+  if (!modal) return;
+
+  lightboxSlides = Array.isArray(slides) ? slides : [{ src: slides }];
+  lightboxIndex = startIndex;
+  renderLightboxSlide();
+
+  modal.classList.toggle('has-nav', lightboxSlides.length > 1);
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox(e) {
@@ -490,11 +540,49 @@ function closeLightbox(e) {
   }
 }
 
-// Close lightbox on Escape key
+// Close lightbox on Escape key, navigate with arrow keys
 document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('lightbox-modal');
+  const isOpen = modal && modal.classList.contains('active');
+
   if (e.key === 'Escape') {
     closeLightbox();
+  } else if (isOpen && e.key === 'ArrowRight') {
+    stepLightbox(1);
+  } else if (isOpen && e.key === 'ArrowLeft') {
+    stepLightbox(-1);
   }
+});
+
+// Swipe left / right on touch devices to change photos
+document.addEventListener('DOMContentLoaded', () => {
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  if (prevBtn) prevBtn.addEventListener('click', () => stepLightbox(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => stepLightbox(1));
+
+  const wrapper = document.querySelector('.lightbox-img-wrapper');
+  if (!wrapper) return;
+
+  let touchStartX = null;
+  let touchStartY = null;
+
+  wrapper.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  wrapper.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    touchStartX = null;
+    touchStartY = null;
+
+    // Ignore mostly-vertical gestures (scroll) and short taps
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+    stepLightbox(dx < 0 ? 1 : -1);
+  }, { passive: true });
 });
 
 // -----------------------------------------------------------------------------
