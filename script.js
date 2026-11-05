@@ -62,6 +62,18 @@ const i18nData = {
     lb_scr_desc: "Darbe trafolu 3 kanallı tristör tetikleme kartı (KiCad 3D render).",
     sys_ups_title: "40 kVA UPS Tasarım & Üretim Entegrasyonu",
     sys_ups_desc: "BetaUPS bünyesinde 40 kVA Kesintisiz Güç Kaynağı projesinde tasarım aşamasından saha üretimine kadar tüm teknik süreçler: Güç katları, HMI dokunmatik operatör paneli arayüzü, RS485/UART haberleşme, test prosedürleri ve malzeme tedarik (BOM) yönetimi.",
+    ups_gallery_title: "40 kVA UPS Cihaz Detayları",
+    ups_gallery_sub: "BetaUPS 40 kVA UPS kabini; güç katları, sürücü kartları, DC bara ve dokunmatik HMI panelinin saha montajından görüntüler. Fotoğraflara tıklayarak büyütebilirsiniz.",
+    ups_img_cabinet_title: "Kabin, Soğutma ve Şebeke Koruması",
+    ups_img_cabinet_desc: "40 kVA UPS metal kabini; zorlamalı havalandırma fanları, bara bağlantıları, giriş/çıkış şalterleri ve şebeke koruma elemanları ile saha montajı.",
+    ups_img_power_title: "Güç Kartları, LED Tanı ve Kablaj",
+    ups_img_power_desc: "Çalışır durumdaki UPS kabininde güç/sürücü kartları, modül durum LED'leri ve çok damarlı kontrol kablajı.",
+    ups_img_smps_title: "SMPS ve Kontrol Kartı Katmanı",
+    ups_img_smps_desc: "Yardımcı besleme (flyback SMPS) kartları, kontrol/ölçüm kartları ve DC bara kapasitör grubunun yerleşimi.",
+    ups_img_hmi_settings_title: "HMI Ayarlar Ekranı",
+    ups_img_hmi_settings_desc: "Dokunmatik HMI panel ayarlar menüsü: nominal çıkış gerilimi, çıkış frekansı, otomatik akü test süresi, bypass limitleri ve kalibrasyon ayarları.",
+    ups_img_hmi_measure_title: "HMI Ölçüm Ekranı (RS485)",
+    ups_img_hmi_measure_desc: "R/S/T fazları için giriş, bypass, çıkış, DC bara ve akü ölçümleri; gerilim, akım ve frekans değerlerinin gerçek zamanlı izlenmesi.",
     sys_med_title: "Otonom Odyometri Medikal Cihazı",
     sys_med_desc: "AiHear Teknoloji A.Ş. kurucu ortaklığıyla TÜBİTAK ve KOSGEB destekli otonom işitme test cihazı geliştirilmesi. Medikal donanım tasarımı, akustik testler, biyouyumluluk ve regülatif sertifikasyon hazırlık süreçlerinin yönetimi.",
     tag_exp: "KARİYER",
@@ -172,6 +184,18 @@ const i18nData = {
     lb_scr_desc: "3-channel thyristor firing board with pulse transformers (KiCad 3D render).",
     sys_ups_title: "40 kVA UPS Design & Production Integration",
     sys_ups_desc: "Full hardware and operational involvement at BetaUPS for 40 kVA UPS: Power stages, HMI touchscreen operator interface, RS485/UART protocol integration, validation testing, and procurement/BOM workflows.",
+    ups_gallery_title: "40 kVA UPS On-Device Details",
+    ups_gallery_sub: "Photos from the field assembly of the BetaUPS 40 kVA UPS cabinet: power stages, driver boards, DC bus and the touchscreen HMI panel. Click any photo to inspect it in full size.",
+    ups_img_cabinet_title: "Cabinet, Cooling & Mains Protection",
+    ups_img_cabinet_desc: "40 kVA UPS metal cabinet in field assembly, with forced-air cooling fans, busbar connections, input/output breakers and mains protection devices.",
+    ups_img_power_title: "Power Boards, LED Diagnostics & Wiring",
+    ups_img_power_desc: "Powered-up UPS cabinet showing power/driver boards, module status LEDs and multi-core control harnesses.",
+    ups_img_smps_title: "SMPS & Control Board Layer",
+    ups_img_smps_desc: "Layout of auxiliary flyback SMPS boards, control/measurement cards and the DC bus capacitor bank.",
+    ups_img_hmi_settings_title: "HMI Settings Screen",
+    ups_img_hmi_settings_desc: "Touchscreen HMI settings menu: nominal output voltage, output frequency, automatic battery test duration, bypass limits and calibration settings.",
+    ups_img_hmi_measure_title: "HMI Measurement Screen (RS485)",
+    ups_img_hmi_measure_desc: "Input, bypass, output, DC bus and battery measurements for R/S/T phases, with real-time voltage, current and frequency monitoring.",
     sys_med_title: "Autonomous Audiometer Medical Device",
     sys_med_desc: "Co-founded AiHear Teknoloji A.Ş. for TÜBİTAK & KOSGEB-supported autonomous audiometric testing device. Managed hardware engineering, acoustic testing, biocompatibility, and regulatory certification pipelines.",
     tag_exp: "CAREER",
@@ -403,12 +427,24 @@ function openLightbox(imageSrc, titleKey, descKey) {
 
   if (modal && img && titleEl && descEl) {
     const title = dict[titleKey] || titleKey;
+    img.classList.remove('is-landscape');
     img.src = imageSrc;
     img.alt = title;
     titleEl.textContent = title;
     descEl.textContent = dict[descKey] || descKey;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Landscape device photos look better filling the dialog width
+    const tagPhoto = () => {
+      const isLandscape = img.naturalWidth > img.naturalHeight;
+      img.classList.toggle('is-landscape', isLandscape);
+    };
+    if (img.complete && img.naturalWidth) {
+      tagPhoto();
+    } else {
+      img.onload = tagPhoto;
+    }
   }
 }
 
