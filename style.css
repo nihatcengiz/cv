@@ -1253,15 +1253,6 @@ ul {
   margin-top: auto;
 }
 
-.location-badge {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent-emerald);
-  background: rgba(16, 185, 129, 0.1);
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-full);
-}
-
 .downloads-box {
   padding: 2.5rem;
   display: flex;
