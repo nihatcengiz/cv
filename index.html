@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&subset=latin,latin-ext&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=3.2">
+  <link rel="stylesheet" href="style.css?v=3.3">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
@@ -846,19 +846,19 @@
   <!-- Lightbox Modal for PCB High-Res inspection -->
   <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
     <div class="lightbox-dialog" onclick="event.stopPropagation()">
-      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Kapat">&times;</button>
-      <button class="lightbox-nav lightbox-nav-prev" type="button" id="lightbox-prev" aria-label="Önceki fotoğraf">
+      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Kapat / Close" title="Kapat / Close">&times;</button>
+      <button class="lightbox-nav lightbox-nav-prev" type="button" id="lightbox-prev" aria-label="Önceki fotoğraf / Previous photo" title="Önceki / Previous">
         <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
-      <button class="lightbox-nav lightbox-nav-next" type="button" id="lightbox-next" aria-label="Sonraki fotoğraf">
+      <button class="lightbox-nav lightbox-nav-next" type="button" id="lightbox-next" aria-label="Sonraki fotoğraf / Next photo" title="Sonraki / Next">
         <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
       <div class="lightbox-img-wrapper">
-        <img src="" alt="" id="lightbox-img" class="lightbox-img">
+        <img src="" alt="Büyütülmüş görsel" id="lightbox-img" class="lightbox-img">
       </div>
       <div class="lightbox-caption">
         <span class="lightbox-counter" id="lightbox-counter" hidden></span>
@@ -890,6 +890,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <script src="script.js?v=3.3"></script>
 </body>
 </html>
