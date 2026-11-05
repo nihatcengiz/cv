@@ -17,7 +17,8 @@
 
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  /* Secondary text must still clear 4.5:1 on --bg-card */
+  --text-dim: #8b98ad;
 
   --accent-cyan: #00f2fe;
   --accent-blue: #4facfe;
@@ -57,7 +58,7 @@
 
   --text-main: #0f172a;
   --text-muted: #475569;
-  --text-dim: #94a3b8;
+  --text-dim: #5b6b80;
 
   --accent-cyan: #0284c7;
   --accent-blue: #2563eb;
@@ -269,6 +270,13 @@ ul {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 242, 254, 0.5);
   color: #040914;
+}
+
+/* The light-theme brand gradient is dark, so dark text would drop below
+   4.5:1 at the blue end of the ramp */
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn-primary:hover {
+  color: #ffffff;
 }
 
 .btn-outline {
@@ -556,15 +564,18 @@ ul {
 }
 
 .name-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 60%, var(--accent-blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Solid accent rather than gradient text: gradient-filled headlines are
+     one of the most recognisable machine-made tells, and they break in
+     high-contrast / forced-colours modes. */
+  color: var(--accent-cyan);
+  -webkit-text-fill-color: currentColor;
+  background: none;
 }
 
 [data-theme="light"] .name-gradient {
-  background: linear-gradient(135deg, #0f172a 0%, var(--accent-cyan) 60%, var(--accent-blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent-cyan);
+  -webkit-text-fill-color: currentColor;
+  background: none;
 }
 
 .hero-role {
@@ -588,8 +599,6 @@ ul {
   line-height: 1.7;
   margin-bottom: 2.25rem;
   max-width: 620px;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 .hero-actions {
@@ -765,8 +774,6 @@ ul {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.65;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -858,8 +865,6 @@ ul {
   font-size: 0.92rem;
   line-height: 1.6;
   margin-bottom: 1.25rem;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 .tech-tags {
@@ -1093,8 +1098,6 @@ ul {
   margin-bottom: 0.65rem;
   font-size: 0.95rem;
   line-height: 1.6;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 .timeline-bullets li strong {
@@ -1105,8 +1108,6 @@ ul {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.6;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1255,8 +1256,6 @@ ul {
   color: var(--text-dim);
   font-size: 0.92rem;
   line-height: 1.6;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1434,8 +1433,6 @@ ul {
 .lightbox-caption p {
   color: var(--text-muted);
   font-size: 0.95rem;
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 /* Portrait device photos (UPS cabinet, HMI screens) need the full dialog width */
@@ -1897,5 +1894,38 @@ ul {
   .tag {
     border: 1px solid #d1d5db !important;
     color: #374151 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion
+   Respect the OS "reduce motion" setting: keep the page usable but drop
+   decorative movement, parallax-free transitions and pulsing accents.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .project-card:hover,
+  .glass-panel:hover,
+  .badge-item:hover,
+  .btn-primary:hover {
+    transform: none;
+  }
+
+  .project-card:hover .project-img,
+  .ups-shot:hover img,
+  .ups-shot.is-active img {
+    transform: none;
   }
 }
