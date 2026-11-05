@@ -62,8 +62,8 @@ const i18nData = {
     lb_scr_desc: "Darbe trafolu 3 kanallı tristör tetikleme kartı (KiCad 3D render).",
     sys_ups_title: "40 kVA UPS Tasarım & Üretim Entegrasyonu",
     sys_ups_desc: "BetaUPS bünyesinde 40 kVA Kesintisiz Güç Kaynağı projesinde tasarım aşamasından saha üretimine kadar tüm teknik süreçler: Güç katları, HMI dokunmatik operatör paneli arayüzü, RS485/UART haberleşme, test prosedürleri ve malzeme tedarik (BOM) yönetimi.",
-    ups_gallery_title: "40 kVA UPS Cihaz Detayları",
-    ups_gallery_sub: "BetaUPS 40 kVA UPS kabini; güç katları, sürücü kartları, DC bara ve dokunmatik HMI panelinin saha montajından görüntüler. Fotoğraflara tıklayarak büyütebilirsiniz.",
+    ups_gallery_count: "5 Cihaz Fotoğrafı",
+    ups_gallery_cta: "Cihaz Fotoğraflarını İncele",
     ups_img_cabinet_title: "Kabin, Soğutma ve Şebeke Koruması",
     ups_img_cabinet_desc: "40 kVA UPS metal kabini; zorlamalı havalandırma fanları, bara bağlantıları, giriş/çıkış şalterleri ve şebeke koruma elemanları ile saha montajı.",
     ups_img_power_title: "Güç Kartları, LED Tanı ve Kablaj",
@@ -184,8 +184,8 @@ const i18nData = {
     lb_scr_desc: "3-channel thyristor firing board with pulse transformers (KiCad 3D render).",
     sys_ups_title: "40 kVA UPS Design & Production Integration",
     sys_ups_desc: "Full hardware and operational involvement at BetaUPS for 40 kVA UPS: Power stages, HMI touchscreen operator interface, RS485/UART protocol integration, validation testing, and procurement/BOM workflows.",
-    ups_gallery_title: "40 kVA UPS On-Device Details",
-    ups_gallery_sub: "Photos from the field assembly of the BetaUPS 40 kVA UPS cabinet: power stages, driver boards, DC bus and the touchscreen HMI panel. Click any photo to inspect it in full size.",
+    ups_gallery_count: "5 Device Photos",
+    ups_gallery_cta: "Inspect Device Photos",
     ups_img_cabinet_title: "Cabinet, Cooling & Mains Protection",
     ups_img_cabinet_desc: "40 kVA UPS metal cabinet in field assembly, with forced-air cooling fans, busbar connections, input/output breakers and mains protection devices.",
     ups_img_power_title: "Power Boards, LED Diagnostics & Wiring",
@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguage();
   initNavigation();
   initDropdown();
+  initUpsGallery();
   initYear();
 });
 
@@ -411,6 +412,39 @@ function initDropdown() {
       if (!wrapper.contains(e.target)) {
         wrapper.classList.remove('open');
       }
+    });
+  }
+}
+
+// -----------------------------------------------------------------------------
+// UPS Device Photo Mini-Gallery (preview strip inside the project card)
+// -----------------------------------------------------------------------------
+function initUpsGallery() {
+  const gallery = document.getElementById('ups-gallery');
+  const ctaBtn = document.getElementById('ups-gallery-btn');
+  if (!gallery) return;
+
+  const shots = Array.from(gallery.querySelectorAll('.ups-shot'));
+  if (!shots.length) return;
+
+  const openShot = (shot) => {
+    shots.forEach((s) => s.classList.toggle('is-active', s === shot));
+    openLightbox(
+      shot.dataset.src,
+      shot.dataset.title,
+      shot.dataset.desc
+    );
+  };
+
+  shots.forEach((shot) => {
+    shot.addEventListener('click', () => openShot(shot));
+  });
+
+  // The CTA button opens the currently highlighted photo
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', () => {
+      const active = gallery.querySelector('.ups-shot.is-active') || shots[0];
+      openShot(active);
     });
   }
 }
