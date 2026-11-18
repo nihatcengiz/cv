@@ -321,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDropdown();
   initUpsGallery();
   initYear();
+  initLightboxHandlers();
 });
 
 // -----------------------------------------------------------------------------
@@ -527,7 +528,9 @@ function renderLightboxSlide() {
   if (!img || !titleEl || !descEl || !slide) return;
 
   const title = dict[slide.titleKey] || slide.titleKey;
+  const wrapper = img.closest('.lightbox-img-wrapper');
   img.classList.remove('is-landscape');
+  if (wrapper) wrapper.classList.remove('is-photo');
   img.src = slide.src;
   img.alt = title;
   titleEl.textContent = title;
@@ -542,10 +545,12 @@ function renderLightboxSlide() {
     }
   }
 
-  // Landscape device photos look better filling the dialog width
+  // Landscape photos fill the dialog; portrait device photos use the
+  // roomier .is-photo wrapper layout defined in style.css.
   const tagPhoto = () => {
     const isLandscape = img.naturalWidth > img.naturalHeight;
     img.classList.toggle('is-landscape', isLandscape);
+    if (wrapper) wrapper.classList.toggle('is-photo', !isLandscape);
   };
   if (img.complete && img.naturalWidth) {
     tagPhoto();
@@ -602,8 +607,8 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Swipe left / right on touch devices to change photos
-document.addEventListener('DOMContentLoaded', () => {
+// Lightbox navigation buttons & swipe gestures
+function initLightboxHandlers() {
   const prevBtn = document.getElementById('lightbox-prev');
   const nextBtn = document.getElementById('lightbox-next');
   if (prevBtn) prevBtn.addEventListener('click', () => stepLightbox(-1));
@@ -631,7 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
     stepLightbox(dx < 0 ? 1 : -1);
   }, { passive: true });
-});
+}
 
 // -----------------------------------------------------------------------------
 // Copy to Clipboard & Toast
