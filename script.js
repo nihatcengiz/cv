@@ -422,9 +422,11 @@ function initNavigation() {
     });
   }
 
-  // Active section link highlighting
-  window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
+  // Active section link highlighting (throttled via requestAnimationFrame)
+  const sections = document.querySelectorAll('section[id]');
+  let scrollTicking = false;
+
+  const updateActiveNav = () => {
     const scrollY = window.pageYOffset;
 
     sections.forEach((current) => {
@@ -441,7 +443,15 @@ function initNavigation() {
         }
       }
     });
-  });
+    scrollTicking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(updateActiveNav);
+      scrollTicking = true;
+    }
+  }, { passive: true });
 }
 
 // -----------------------------------------------------------------------------
@@ -607,8 +617,17 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Lightbox navigation buttons & swipe gestures
+// Lightbox navigation buttons, keyboard card activation & swipe gestures
 function initLightboxHandlers() {
+  document.querySelectorAll('[role="button"][onclick]').forEach((card) => {
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
   const prevBtn = document.getElementById('lightbox-prev');
   const nextBtn = document.getElementById('lightbox-next');
   if (prevBtn) prevBtn.addEventListener('click', () => stepLightbox(-1));

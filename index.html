@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&subset=latin,latin-ext&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=3.8">
+  <link rel="stylesheet" href="style.css?v=3.9">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
@@ -183,7 +183,7 @@
 
         <!-- Hero Visual Badge / Showcase Card -->
         <div class="hero-visual">
-          <div class="pcb-preview-card glass-panel" onclick="openLightbox([{ src: 'SMPS.png', titleKey: 'hw_smps_title', descKey: 'lb_smps_desc' }])">
+          <div class="pcb-preview-card glass-panel" role="button" tabindex="0" onclick="openLightbox([{ src: 'SMPS.png', titleKey: 'hw_smps_title', descKey: 'lb_smps_desc' }])">
             <div class="pcb-card-badge">
               <span class="badge-icon">⚡</span>
               <span data-i18n="hero_card_badge">Öne Çıkan Kart Tasarımı</span>
@@ -259,7 +259,7 @@
 
         <div class="projects-grid">
           <!-- Card: UPS Control Motherboard (anakart.png) -->
-          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'anakart.png', titleKey: 'hw_motherboard_title', descKey: 'lb_motherboard_desc' }])">
+          <div class="project-card glass-panel" role="button" tabindex="0" onclick="openLightbox([{ src: 'anakart.png', titleKey: 'hw_motherboard_title', descKey: 'lb_motherboard_desc' }])">
             <div class="project-img-box">
               <img src="anakart.png" alt="UPS Ana Kontrol Kartı (Motherboard)" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -331,7 +331,7 @@
             </div>
           </div>
           <!-- Card 1: Flyback SMPS -->
-          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'SMPS.png', titleKey: 'hw_smps_title', descKey: 'lb_smps_desc' }])">
+          <div class="project-card glass-panel" role="button" tabindex="0" onclick="openLightbox([{ src: 'SMPS.png', titleKey: 'hw_smps_title', descKey: 'lb_smps_desc' }])">
             <div class="project-img-box">
               <img src="SMPS.png" alt="Flyback SMPS Devre Kartı" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -375,7 +375,7 @@
           </div>
 
           <!-- Card 2: IGBT Gate Driver -->
-          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'igbt.png', titleKey: 'hw_igbt_title', descKey: 'lb_igbt_desc' }])">
+          <div class="project-card glass-panel" role="button" tabindex="0" onclick="openLightbox([{ src: 'igbt.png', titleKey: 'hw_igbt_title', descKey: 'lb_igbt_desc' }])">
             <div class="project-img-box">
               <img src="igbt.png" alt="IGBT Gate Driver PCB" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -423,7 +423,7 @@
           </div>
 
           <!-- Card 3: Tristör SCR Driver -->
-          <div class="project-card glass-panel" onclick="openLightbox([{ src: 'tristor.png', titleKey: 'hw_scr_title', descKey: 'lb_scr_desc' }])">
+          <div class="project-card glass-panel" role="button" tabindex="0" onclick="openLightbox([{ src: 'tristor.png', titleKey: 'hw_scr_title', descKey: 'lb_scr_desc' }])">
             <div class="project-img-box">
               <img src="tristor.png" alt="Tristör Sürücü Devresi" class="project-img" loading="lazy">
               <div class="zoom-badge">
@@ -456,20 +456,20 @@
           <div class="project-card glass-panel">
             <div class="project-img-box project-img-showcase">
               <div class="ups-gallery" id="ups-gallery">
-                <button type="button" class="ups-shot is-active" data-key="ups_img_cabinet" data-src="cihaz/WhatsApp Image 2026-11-05 at 20.27.55.jpeg" data-title="ups_img_cabinet_title" data-desc="ups_img_cabinet_desc">
-                  <img src="cihaz/WhatsApp Image 2026-11-05 at 20.27.55.jpeg" alt="40 kVA UPS Kabin ve Güç Katları" loading="lazy">
+                <button type="button" class="ups-shot is-active" data-key="ups_img_cabinet" data-src="cihaz/ups-kabin.jpeg" data-title="ups_img_cabinet_title" data-desc="ups_img_cabinet_desc">
+                  <img src="cihaz/ups-kabin.jpeg" alt="40 kVA UPS Kabin ve Güç Katları" loading="lazy">
                 </button>
-                <button type="button" class="ups-shot" data-key="ups_img_power" data-src="cihaz/WhatsApp Image 2026-11-05 at 20.27.52.jpeg" data-title="ups_img_power_title" data-desc="ups_img_power_desc">
-                  <img src="cihaz/WhatsApp Image 2026-11-05 at 20.27.52.jpeg" alt="40 kVA UPS Güç Kartları ve Kablaj" loading="lazy">
+                <button type="button" class="ups-shot" data-key="ups_img_power" data-src="cihaz/ups-guc-kartlari.jpeg" data-title="ups_img_power_title" data-desc="ups_img_power_desc">
+                  <img src="cihaz/ups-guc-kartlari.jpeg" alt="40 kVA UPS Güç Kartları ve Kablaj" loading="lazy">
                 </button>
-                <button type="button" class="ups-shot" data-key="ups_img_smps" data-src="cihaz/WhatsApp Image 2026-11-05 at 20.27.52 (1).jpeg" data-title="ups_img_smps_title" data-desc="ups_img_smps_desc">
-                  <img src="cihaz/WhatsApp Image 2026-11-05 at 20.27.52 (1).jpeg" alt="UPS Yardımcı Besleme ve Kontrol Kartları" loading="lazy">
+                <button type="button" class="ups-shot" data-key="ups_img_smps" data-src="cihaz/ups-smps-kontrol.jpeg" data-title="ups_img_smps_title" data-desc="ups_img_smps_desc">
+                  <img src="cihaz/ups-smps-kontrol.jpeg" alt="UPS Yardımcı Besleme ve Kontrol Kartları" loading="lazy">
                 </button>
-                <button type="button" class="ups-shot" data-key="ups_img_hmi_settings" data-src="cihaz/WhatsApp Image 2026-11-05 at 20.27.53 (1).jpeg" data-title="ups_img_hmi_settings_title" data-desc="ups_img_hmi_settings_desc">
-                  <img src="cihaz/WhatsApp Image 2026-11-05 at 20.27.53 (1).jpeg" alt="HMI Ayarlar Ekranı" loading="lazy">
+                <button type="button" class="ups-shot" data-key="ups_img_hmi_settings" data-src="cihaz/ups-hmi-ayarlar.jpeg" data-title="ups_img_hmi_settings_title" data-desc="ups_img_hmi_settings_desc">
+                  <img src="cihaz/ups-hmi-ayarlar.jpeg" alt="HMI Ayarlar Ekranı" loading="lazy">
                 </button>
-                <button type="button" class="ups-shot" data-key="ups_img_hmi_measure" data-src="cihaz/WhatsApp Image 2026-11-05 at 20.27.53 (2).jpeg" data-title="ups_img_hmi_measure_title" data-desc="ups_img_hmi_measure_desc">
-                  <img src="cihaz/WhatsApp Image 2026-11-05 at 20.27.53 (2).jpeg" alt="HMI Ölçüm Ekranı" loading="lazy">
+                <button type="button" class="ups-shot" data-key="ups_img_hmi_measure" data-src="cihaz/ups-hmi-olcum.jpeg" data-title="ups_img_hmi_measure_title" data-desc="ups_img_hmi_measure_desc">
+                  <img src="cihaz/ups-hmi-olcum.jpeg" alt="HMI Ölçüm Ekranı" loading="lazy">
                 </button>
               </div>
               <div class="zoom-badge">
@@ -949,6 +949,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js?v=3.8"></script>
+  <script src="script.js?v=3.9"></script>
 </body>
 </html>
